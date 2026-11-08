@@ -1,11 +1,14 @@
-name: Bounded ARGE test
+name: Bounded independent kernel
 
 on:
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
+      - 'KERNEL.md'
+      - 'kernel/*.py'
       - 'arge_ci.py'
       - 'strateji_backtest.py'
       - 'test_arge.py'
@@ -15,13 +18,53 @@ permissions:
   contents: read
 
 concurrency:
-  group: bounded-arge
+  group: bounded-arge-kernel
   cancel-in-progress: false
 
 jobs:
-  research-test:
+  budget-gate:
+    if: github.ref == 'refs/heads/main' && github.run_attempt == 1
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 2
+    permissions:
+      contents: write
+    concurrency:
+      group: kernel-budget-ledger
+      cancel-in-progress: false
+    outputs:
+      approved: ${{ steps.reserve.outputs.approved }}
+      sha: ${{ steps.reserve.outputs.sha }}
+      day: ${{ steps.reserve.outputs.day }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Reserve and persist BEFORE approval
+        id: reserve
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git rebase origin/main
+          git ls-files --error-unmatch kernel/budget.json
+          python3 kernel/budget.py
+          git config user.name 'kernel-budget[bot]'
+          git config user.email 'kernel-budget[bot]@users.noreply.github.com'
+          git add -- kernel/budget.json
+          git commit -m 'kernel: reserve bounded research budget [skip ci]'
+          git push origin HEAD:main
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "day=$(python3 -c 'import json; print(max(json.load(open("kernel/budget.json"))["days"]))')" >> "$GITHUB_OUTPUT"
+          echo 'approved=true' >> "$GITHUB_OUTPUT"
+
+  research:
+    needs: budget-gate
+    if: needs.budget-gate.outputs.approved == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    outputs:
+      report: ${{ steps.result.outputs.report }}
     env:
       TZ: UTC
       PYTHONUNBUFFERED: '1'
@@ -30,11 +73,56 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ needs.budget-gate.outputs.sha }}
           persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Reject expired reservation (UTC rollover)
+        env:
+          RESERVED_DAY: ${{ needs.budget-gate.outputs.day }}
+        run: test "$(date -u +%F)" = "$RESERVED_DAY"
       - name: Offline regression tests
-        run: python -m unittest -v test_arge.py
-      - name: One public-data research step
-        run: python arge_ci.py
+        run: python3 -m unittest -v test_arge kernel.test_kernel
+      - name: One rotating research task
+        env:
+          GITHUB_SHA: ${{ needs.budget-gate.outputs.sha }}
+        run: python3 kernel/research.py
+      - name: Small report, no artifact/cache upload
+        id: result
+        run: |
+          python3 - <<'PY'
+          import base64, os
+          from pathlib import Path
+          encoded = base64.b64encode(Path('kernel/latest.json').read_bytes()).decode()
+          if len(encoded) > 32000:
+              raise ValueError('Oversized report')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write('report=' + encoded + '\n')
+          PY
+
+  publish-findings:
+    needs: [budget-gate, research]
+    if: success() && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Keep only meaningful findings (separate write job)
+        env:
+          RESULT_JSON: ${{ needs.research.outputs.report }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git rebase origin/main
+          python3 kernel/research.py --record
+          git config user.name 'kernel-findings[bot]'
+          git config user.email 'kernel-findings[bot]@users.noreply.github.com'
+          git add -- kernel/findings.json kernel/FINDINGS.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'kernel: record changed research finding [skip ci]'
+            git push origin HEAD:main
+          fi

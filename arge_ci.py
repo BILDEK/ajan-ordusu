@@ -3,6 +3,7 @@ Train-only volatility threshold and chronological holdout; approximate costs.
 """
 import contextlib
 import datetime as dt
+import hashlib
 import io
 import json
 import os
@@ -82,13 +83,20 @@ def main():
         "first_utc": dt.datetime.fromtimestamp(candles[0]["ts"] / 1000, dt.timezone.utc).isoformat(),
         "last_utc": dt.datetime.fromtimestamp(candles[-1]["ts"] / 1000, dt.timezone.utc).isoformat(),
         "training_candles": cut, "holdout_candles": len(candles) - cut,
+        "dataset_sha256": hashlib.sha256(json.dumps(candles, sort_keys=True).encode()).hexdigest(),
+        "data_source": "https://www.okx.com/api/v5/market/history-candles",
+        "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
+        "parameters": {"take_profit_ATR": 1.5, "stop_loss_ATR": 1, "max_hold_bars": 12,
+                       "training_fraction": 0.7, "min_training_examples": 20},
         "round_trip_cost_assumption_bps": COST_BPS, "selected_on_training_only": selected,
         "download_seconds": round(download_seconds, 3),
         "calculation_seconds": round(time.perf_counter() - calc_start, 3),
         "logical_cpus": os.cpu_count(),
         "caveats": ["Small holdout; not evidence of profitability", "Selection bias remains in training",
                     "No funding/gap fills/market impact", "R diagnostics, not portfolio return",
-                    "No model training or self-improving agent; this is a bounded software/data test"],
+                    "No model training or self-improving agent; this is a bounded software/data test",
+                    "No raw snapshot retained; provider revisions can prevent exact reproduction",
+                    "Repeated daily holdouts overlap; these are not independent confirmations"],
     }
     report = "## Bounded research test\n\n```json\n" + json.dumps(result, indent=2) + "\n```\n"
     print(report)
