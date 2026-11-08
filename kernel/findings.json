@@ -1,1 +1,47 @@
-{}
+{
+  "science": {
+    "topic": "science",
+    "utc_day": "2026-11-08",
+    "method": "kernel-v1",
+    "source_commit": "94c41f5dd4eac44ea50bf4c7f7fee6587d9acf8e",
+    "sources": [
+      "https://dlmf.nist.gov/3.5"
+    ],
+    "result": {
+      "hypothesis": "Trapezoid integral sin(x), [0,pi], exact=2; error ratio in (3.9,4.1)",
+      "errors": [
+        {
+          "n": 16,
+          "estimate": 1.9935703437723395,
+          "absolute_error": 0.006429656227660452
+        },
+        {
+          "n": 32,
+          "estimate": 1.9983933609701445,
+          "absolute_error": 0.0016066390298554722
+        },
+        {
+          "n": 64,
+          "estimate": 1.9995983886400377,
+          "absolute_error": 0.0004016113599623061
+        },
+        {
+          "n": 128,
+          "estimate": 1.9998996001842024,
+          "absolute_error": 0.0001003998157975694
+        }
+      ],
+      "ratios": [
+        4.00192956114034,
+        4.000482033193149,
+        4.00012048599823
+      ],
+      "caveats": [
+        "One smooth integrand, not a general accuracy proof"
+      ],
+      "next_method": "Human-reviewed extension: non-smooth integrand and roundoff study",
+      "product_hypothesis": "Open numerical-method QA/tutorial package; demand unvalidated"
+    },
+    "result_sha256": "95f49da3d60f64df582d96062a9b838c615dc492a51f356fc917eef6a836a66f"
+  }
+}
