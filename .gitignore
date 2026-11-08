@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+backtest_veri/
+last-ci-result.json
+.env
+*.key
+*.dpapi

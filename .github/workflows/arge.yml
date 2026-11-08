@@ -1,0 +1,40 @@
+name: Bounded ARGE test
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'arge_ci.py'
+      - 'strateji_backtest.py'
+      - 'test_arge.py'
+      - '.github/workflows/arge.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bounded-arge
+  cancel-in-progress: false
+
+jobs:
+  research-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TZ: UTC
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline regression tests
+        run: python -m unittest -v test_arge.py
+      - name: One public-data research step
+        run: python arge_ci.py
