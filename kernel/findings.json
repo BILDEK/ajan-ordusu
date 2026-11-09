@@ -43,5 +43,61 @@
       "product_hypothesis": "Open numerical-method QA/tutorial package; demand unvalidated"
     },
     "result_sha256": "95f49da3d60f64df582d96062a9b838c615dc492a51f356fc917eef6a836a66f"
+  },
+  "income": {
+    "topic": "income",
+    "utc_day": "2026-11-09",
+    "method": "kernel-v1",
+    "source_commit": "979e5abca5c017eb0abc91c774f0b94c4f8b0bf9",
+    "sources": [
+      "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
+      "https://doi.org/10.1090/noti1105"
+    ],
+    "result": {
+      "instrument": "ETH-USDT-SWAP",
+      "bar": "5m",
+      "candles": 1999,
+      "first_utc": "2026-11-02T07:50:00+00:00",
+      "last_utc": "2026-11-09T06:20:00+00:00",
+      "training_candles": 1399,
+      "holdout_candles": 600,
+      "dataset_sha256": "95bdfad45a39ac493997b599e1b11963a59e532f665fe957a15d0b3a9d12b1b8",
+      "data_source": "https://www.okx.com/api/v5/market/history-candles",
+      "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
+      "parameters": {
+        "take_profit_ATR": 1.5,
+        "stop_loss_ATR": 1,
+        "max_hold_bars": 12,
+        "training_fraction": 0.7,
+        "min_training_examples": 20
+      },
+      "round_trip_cost_assumption_bps": 12,
+      "selected_on_training_only": {
+        "strategy": "breakout_short",
+        "regime": "highvol",
+        "training": {
+          "n": 30,
+          "mean_net_R": -0.2227,
+          "profit_factor": 0.706
+        },
+        "holdout": {
+          "n": 2,
+          "mean_net_R": 1.2364,
+          "profit_factor": null
+        }
+      },
+      "caveats": [
+        "Small holdout; not evidence of profitability",
+        "Selection bias remains in training",
+        "No funding/gap fills/market impact",
+        "R diagnostics, not portfolio return",
+        "No model training or self-improving agent; this is a bounded software/data test",
+        "No raw snapshot retained; provider revisions can prevent exact reproduction",
+        "Repeated daily holdouts overlap; these are not independent confirmations"
+      ],
+      "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
+      "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
+    },
+    "result_sha256": "a18a821c7da2eeecad52b53f70ed450a25f6fe6556a8a8d1b7a069c25be5eb64"
   }
 }
