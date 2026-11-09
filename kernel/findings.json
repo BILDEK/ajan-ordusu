@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-09",
     "method": "kernel-v1",
-    "source_commit": "979e5abca5c017eb0abc91c774f0b94c4f8b0bf9",
+    "source_commit": "cb38d8421d6f44eddd16d1432cc5bf71d5d5f4d9",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-02T07:50:00+00:00",
-      "last_utc": "2026-11-09T06:20:00+00:00",
+      "first_utc": "2026-11-02T23:45:00+00:00",
+      "last_utc": "2026-11-09T22:15:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "95bdfad45a39ac493997b599e1b11963a59e532f665fe957a15d0b3a9d12b1b8",
+      "dataset_sha256": "d7017a8621929a0a2cf891e003c5b4ce0fe30f3465462590df19411ac21f4652",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "breakout_short",
         "regime": "highvol",
         "training": {
-          "n": 30,
-          "mean_net_R": -0.2227,
-          "profit_factor": 0.706
+          "n": 29,
+          "mean_net_R": -0.2989,
+          "profit_factor": 0.625
         },
         "holdout": {
-          "n": 2,
-          "mean_net_R": 1.2364,
-          "profit_factor": null
+          "n": 8,
+          "mean_net_R": -0.4553,
+          "profit_factor": 0.489
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "a18a821c7da2eeecad52b53f70ed450a25f6fe6556a8a8d1b7a069c25be5eb64"
+    "result_sha256": "d7654f17188a554ef12e0c3755ce3e2a1c4941a1aa315b361b8a095a0698d203"
   }
 }
