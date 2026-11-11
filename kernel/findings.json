@@ -46,9 +46,9 @@
   },
   "income": {
     "topic": "income",
-    "utc_day": "2026-11-09",
+    "utc_day": "2026-11-11",
     "method": "kernel-v1",
-    "source_commit": "cb38d8421d6f44eddd16d1432cc5bf71d5d5f4d9",
+    "source_commit": "edfd00043d0ceb2991f6c296804748b42257d91c",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-02T23:45:00+00:00",
-      "last_utc": "2026-11-09T22:15:00+00:00",
+      "first_utc": "2026-11-04T07:45:00+00:00",
+      "last_utc": "2026-11-11T06:15:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "d7017a8621929a0a2cf891e003c5b4ce0fe30f3465462590df19411ac21f4652",
+      "dataset_sha256": "af13041d4c621ed4dc02bf7c2b103ca84269c992f8522f974a6e34443830e13f",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -73,17 +73,17 @@
       },
       "round_trip_cost_assumption_bps": 12,
       "selected_on_training_only": {
-        "strategy": "breakout_short",
+        "strategy": "bb_long",
         "regime": "highvol",
         "training": {
-          "n": 29,
-          "mean_net_R": -0.2989,
-          "profit_factor": 0.625
+          "n": 33,
+          "mean_net_R": -0.4059,
+          "profit_factor": 0.511
         },
         "holdout": {
-          "n": 8,
-          "mean_net_R": -0.4553,
-          "profit_factor": 0.489
+          "n": 21,
+          "mean_net_R": -0.5741,
+          "profit_factor": 0.387
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "d7654f17188a554ef12e0c3755ce3e2a1c4941a1aa315b361b8a095a0698d203"
+    "result_sha256": "da95b4d92eac57fe771eb0bf5015c1242c6307fde186b4f3f63b479700010a6d"
   }
 }
