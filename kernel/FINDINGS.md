@@ -4,9 +4,9 @@ Latest changed result per topic; no model-weight learning.
 Full measurements and reproducibility metadata: `findings.json`.
 
 ## income — 2026-11-13
-Method: kernel-v1; source: `42015ff42a5ffb742ad83ac7436a7e52dad187c8`.
+Method: kernel-v1; source: `69d88cbbc501604038902f1caf4b121b9ed012b8`.
 Training-selected candidate and holdout diagnostics recorded; NOT profitability evidence.
-Data: 2026-11-06T08:10:00+00:00 to 2026-11-13T06:40:00+00:00, 1999 candles.
+Data: 2026-11-06T21:05:00+00:00 to 2026-11-13T19:35:00+00:00, 1999 candles.
 Limitations: Small holdout; not evidence of profitability; Selection bias remains in training; No funding/gap fills/market impact; R diagnostics, not portfolio return; No model training or self-improving agent; this is a bounded software/data test; No raw snapshot retained; provider revisions can prevent exact reproduction; Repeated daily holdouts overlap; these are not independent confirmations
 Next method (proposal, not automatically adopted): Freeze hypotheses, add independent windows and cost sensitivity before claims
 Product hypothesis (no guaranteed income): Reproducible backtest data-quality report/tool; no signals or trade service

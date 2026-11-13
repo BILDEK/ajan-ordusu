@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-13",
     "method": "kernel-v1",
-    "source_commit": "42015ff42a5ffb742ad83ac7436a7e52dad187c8",
+    "source_commit": "69d88cbbc501604038902f1caf4b121b9ed012b8",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-06T08:10:00+00:00",
-      "last_utc": "2026-11-13T06:40:00+00:00",
+      "first_utc": "2026-11-06T21:05:00+00:00",
+      "last_utc": "2026-11-13T19:35:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "9aaa363b54074433884ca8e0650ed95876d298e828fa9dc23bfece133e7fa7c0",
+      "dataset_sha256": "509f2e8e641fd1ddd565fb13df575281848c76390dbdc60eff23193bcf40c6f1",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "bb_short",
         "regime": "highvol",
         "training": {
-          "n": 21,
-          "mean_net_R": -0.1305,
-          "profit_factor": 0.787
+          "n": 22,
+          "mean_net_R": -0.2397,
+          "profit_factor": 0.639
         },
         "holdout": {
-          "n": 7,
-          "mean_net_R": -0.2766,
-          "profit_factor": 0.57
+          "n": 10,
+          "mean_net_R": -0.3549,
+          "profit_factor": 0.511
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "d9d74fab17342fea5fe22c8808bf66a3c3f4489ae4df2af46186552208b86813"
+    "result_sha256": "2eb810725a41d765d0967037d3722332490216ab6c0c67ede9bac25c29fb768c"
   }
 }
