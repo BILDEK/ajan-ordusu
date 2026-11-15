@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-15",
     "method": "kernel-v1",
-    "source_commit": "9cfc68ff22b95089dc754034c6ef2493e0e3be77",
+    "source_commit": "bc0d67fc02940c5bfa2ce3384359c3f25e625223",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-08T07:55:00+00:00",
-      "last_utc": "2026-11-15T06:25:00+00:00",
+      "first_utc": "2026-11-08T20:15:00+00:00",
+      "last_utc": "2026-11-15T18:45:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "cd7622c3417e018b70e25b78d3f27ba305111864797818b22e801282394fbe77",
+      "dataset_sha256": "42268385f160af57505c620e5b31d33e3bd74bda8032aed658639bbfd3f16b70",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "bb_short",
         "regime": "ALL",
         "training": {
-          "n": 30,
-          "mean_net_R": -0.2611,
-          "profit_factor": 0.617
+          "n": 34,
+          "mean_net_R": -0.2797,
+          "profit_factor": 0.591
         },
         "holdout": {
           "n": 16,
-          "mean_net_R": -0.5381,
-          "profit_factor": 0.37
+          "mean_net_R": -0.5605,
+          "profit_factor": 0.366
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "81c682f421ca5246428599426103d19c6297548002e60584fb9387a6de8db0a3"
+    "result_sha256": "839c2aacb838a47830bf0861d2360ebac06e505b084577f44c86e97ba0131bab"
   }
 }
