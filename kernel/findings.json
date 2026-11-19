@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-19",
     "method": "kernel-v1",
-    "source_commit": "fc540ae2d86f749ead281386c8c73d1f691eda44",
+    "source_commit": "8f77954568945b71ef71e6f7e6c784d1f3604c48",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-12T08:50:00+00:00",
-      "last_utc": "2026-11-19T07:20:00+00:00",
+      "first_utc": "2026-11-12T22:00:00+00:00",
+      "last_utc": "2026-11-19T20:30:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "678c7649a13d4c61bdda97b88a538fc99962720323501e8a513be2680ed9611f",
+      "dataset_sha256": "8f24af30175746ba8f0dc76da3f897a6c58c37eabac00c654e9f5970700cb227",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "sweep_long",
         "regime": "ALL",
         "training": {
-          "n": 25,
-          "mean_net_R": 0.0149,
-          "profit_factor": 1.024
+          "n": 27,
+          "mean_net_R": -0.0903,
+          "profit_factor": 0.865
         },
         "holdout": {
-          "n": 16,
-          "mean_net_R": -0.3813,
-          "profit_factor": 0.531
+          "n": 12,
+          "mean_net_R": -0.4238,
+          "profit_factor": 0.493
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "f2e182335f19dd3be8f73459f37ea3ff1f2c86c7f1b81f9274c0a824a08c61e2"
+    "result_sha256": "7c9ed1958705cc28ed58f3d775efa9f46eaa5a16f0bca53eee8ea2313521acd3"
   }
 }
