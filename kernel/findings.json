@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-21",
     "method": "kernel-v1",
-    "source_commit": "faa7784ecc19c4bcbfb229e67695b5adb86a2989",
+    "source_commit": "422850952444ed97983bc8427d8e793aae74eb1b",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-14T08:30:00+00:00",
-      "last_utc": "2026-11-21T07:00:00+00:00",
+      "first_utc": "2026-11-14T20:40:00+00:00",
+      "last_utc": "2026-11-21T19:10:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "c94b795693c565b8e65aa58a5e499a56dba316e4f539181e62c3b938fb38ce53",
+      "dataset_sha256": "e3aa4755e069d643351477a09ba40d744d614f807c8e217162868cd73ff51b1a",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -73,17 +73,17 @@
       },
       "round_trip_cost_assumption_bps": 12,
       "selected_on_training_only": {
-        "strategy": "sweep_long",
-        "regime": "ALL",
+        "strategy": "bb_short",
+        "regime": "up",
         "training": {
-          "n": 32,
-          "mean_net_R": -0.1663,
-          "profit_factor": 0.765
+          "n": 20,
+          "mean_net_R": 0.165,
+          "profit_factor": 1.321
         },
         "holdout": {
-          "n": 5,
-          "mean_net_R": -0.3067,
-          "profit_factor": 0.59
+          "n": 10,
+          "mean_net_R": 0.0469,
+          "profit_factor": 1.085
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "f453b488c763ac465834008a4dba6e910b8132dcdea891ba41bf541dcb8986a6"
+    "result_sha256": "5e06d818bd9d6bbb2712174859c7d8788006b1ba425c2df860d7165a91d8b16c"
   }
 }
