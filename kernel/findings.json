@@ -46,9 +46,9 @@
   },
   "income": {
     "topic": "income",
-    "utc_day": "2026-11-19",
+    "utc_day": "2026-11-21",
     "method": "kernel-v1",
-    "source_commit": "8f77954568945b71ef71e6f7e6c784d1f3604c48",
+    "source_commit": "faa7784ecc19c4bcbfb229e67695b5adb86a2989",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-12T22:00:00+00:00",
-      "last_utc": "2026-11-19T20:30:00+00:00",
+      "first_utc": "2026-11-14T08:30:00+00:00",
+      "last_utc": "2026-11-21T07:00:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "8f24af30175746ba8f0dc76da3f897a6c58c37eabac00c654e9f5970700cb227",
+      "dataset_sha256": "c94b795693c565b8e65aa58a5e499a56dba316e4f539181e62c3b938fb38ce53",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "sweep_long",
         "regime": "ALL",
         "training": {
-          "n": 27,
-          "mean_net_R": -0.0903,
-          "profit_factor": 0.865
+          "n": 32,
+          "mean_net_R": -0.1663,
+          "profit_factor": 0.765
         },
         "holdout": {
-          "n": 12,
-          "mean_net_R": -0.4238,
-          "profit_factor": 0.493
+          "n": 5,
+          "mean_net_R": -0.3067,
+          "profit_factor": 0.59
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "7c9ed1958705cc28ed58f3d775efa9f46eaa5a16f0bca53eee8ea2313521acd3"
+    "result_sha256": "f453b488c763ac465834008a4dba6e910b8132dcdea891ba41bf541dcb8986a6"
   }
 }
