@@ -46,9 +46,9 @@
   },
   "income": {
     "topic": "income",
-    "utc_day": "2026-11-21",
+    "utc_day": "2026-11-23",
     "method": "kernel-v1",
-    "source_commit": "422850952444ed97983bc8427d8e793aae74eb1b",
+    "source_commit": "6ed866bf9aa2f60460587f350dd3bfbf42fd7553",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-14T20:40:00+00:00",
-      "last_utc": "2026-11-21T19:10:00+00:00",
+      "first_utc": "2026-11-16T09:00:00+00:00",
+      "last_utc": "2026-11-23T07:30:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "e3aa4755e069d643351477a09ba40d744d614f807c8e217162868cd73ff51b1a",
+      "dataset_sha256": "643fb562d4ea3738d6f91483f72d32a557f2d7dd156fdf58a26e146939bf2b49",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "bb_short",
         "regime": "up",
         "training": {
-          "n": 20,
-          "mean_net_R": 0.165,
-          "profit_factor": 1.321
+          "n": 22,
+          "mean_net_R": 0.1357,
+          "profit_factor": 1.254
         },
         "holdout": {
-          "n": 10,
-          "mean_net_R": 0.0469,
-          "profit_factor": 1.085
+          "n": 15,
+          "mean_net_R": -0.2855,
+          "profit_factor": 0.626
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "5e06d818bd9d6bbb2712174859c7d8788006b1ba425c2df860d7165a91d8b16c"
+    "result_sha256": "486cdc746619e29a5414d44dddbc91342d14b519cebc27066af5fcc34335880a"
   }
 }
