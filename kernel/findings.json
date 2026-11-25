@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-25",
     "method": "kernel-v1",
-    "source_commit": "034f69efef6d732e1f29ba203cd723f2ea0985e2",
+    "source_commit": "45e3329d17c4c125233ce100f2ef821c31b51c1d",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-18T09:55:00+00:00",
-      "last_utc": "2026-11-25T08:25:00+00:00",
+      "first_utc": "2026-11-18T23:05:00+00:00",
+      "last_utc": "2026-11-25T21:35:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "e3cd29050bb10538390864481bfffbcfdf49faa137b51b1240dff383a2c1ebda",
+      "dataset_sha256": "13527451ce74e138689fd18af518f707323284fb3ec2a1bba57ea83c355dbbbd",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -73,17 +73,17 @@
       },
       "round_trip_cost_assumption_bps": 12,
       "selected_on_training_only": {
-        "strategy": "bb_short",
-        "regime": "up",
+        "strategy": "bb_long",
+        "regime": "down",
         "training": {
           "n": 25,
-          "mean_net_R": -0.1692,
-          "profit_factor": 0.758
+          "mean_net_R": -0.1644,
+          "profit_factor": 0.749
         },
         "holdout": {
-          "n": 2,
-          "mean_net_R": -1.185,
-          "profit_factor": 0.0
+          "n": 17,
+          "mean_net_R": -0.0462,
+          "profit_factor": 0.929
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "a63ff283acd9b57a63f6f3051f892e1261020df3fc5c2eb1f5f3c8c7a1171148"
+    "result_sha256": "d824369e794588ae89e2311e793a3684e4e6b82a4b679fc36431fe2c8190abda"
   }
 }
