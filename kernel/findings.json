@@ -46,9 +46,9 @@
   },
   "income": {
     "topic": "income",
-    "utc_day": "2026-11-23",
+    "utc_day": "2026-11-25",
     "method": "kernel-v1",
-    "source_commit": "4d26454ecce3f4df2b5c38f3990df7952754f73d",
+    "source_commit": "034f69efef6d732e1f29ba203cd723f2ea0985e2",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-17T01:15:00+00:00",
-      "last_utc": "2026-11-23T23:45:00+00:00",
+      "first_utc": "2026-11-18T09:55:00+00:00",
+      "last_utc": "2026-11-25T08:25:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "2917ae0f3b2bc620e2c9717cdcfe07d66574ffecb1a7ca62ff132ae11f63184e",
+      "dataset_sha256": "e3cd29050bb10538390864481bfffbcfdf49faa137b51b1240dff383a2c1ebda",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "bb_short",
         "regime": "up",
         "training": {
-          "n": 24,
-          "mean_net_R": 0.0893,
-          "profit_factor": 1.167
+          "n": 25,
+          "mean_net_R": -0.1692,
+          "profit_factor": 0.758
         },
         "holdout": {
-          "n": 12,
-          "mean_net_R": -0.5637,
-          "profit_factor": 0.397
+          "n": 2,
+          "mean_net_R": -1.185,
+          "profit_factor": 0.0
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "f0f8d33cfa50cfb778ea1835dfb77d121e6787d660aef8d0204829064067e6eb"
+    "result_sha256": "a63ff283acd9b57a63f6f3051f892e1261020df3fc5c2eb1f5f3c8c7a1171148"
   }
 }
