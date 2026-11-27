@@ -48,7 +48,7 @@
     "topic": "income",
     "utc_day": "2026-11-27",
     "method": "kernel-v1",
-    "source_commit": "f42191330ae4ba48061d4364a4fb6f308edd3043",
+    "source_commit": "8bb60ff229d8afc741a51dd7e972718f1efbe7a1",
     "sources": [
       "https://www.okx.com/docs-v5/en/#rest-api-market-data-get-history-candlesticks",
       "https://doi.org/10.1090/noti1105"
@@ -57,11 +57,11 @@
       "instrument": "ETH-USDT-SWAP",
       "bar": "5m",
       "candles": 1999,
-      "first_utc": "2026-11-20T09:55:00+00:00",
-      "last_utc": "2026-11-27T08:25:00+00:00",
+      "first_utc": "2026-11-20T22:40:00+00:00",
+      "last_utc": "2026-11-27T21:10:00+00:00",
       "training_candles": 1399,
       "holdout_candles": 600,
-      "dataset_sha256": "0af0e8c750f535959f9d47d351fe5599f1e6e3e9d597024d746c002bd13d1a14",
+      "dataset_sha256": "cdec6ae52ff3f4af273d406dfe7690b9b525f682bde6647d4dfb62493ec9ba08",
       "data_source": "https://www.okx.com/api/v5/market/history-candles",
       "reproduce": "ETH-USDT-SWAP/5m, stated UTC interval; canonical normalized candles JSON hash",
       "parameters": {
@@ -76,14 +76,14 @@
         "strategy": "bb_long",
         "regime": "down",
         "training": {
-          "n": 32,
-          "mean_net_R": -0.2213,
-          "profit_factor": 0.683
+          "n": 29,
+          "mean_net_R": -0.0476,
+          "profit_factor": 0.922
         },
         "holdout": {
-          "n": 5,
-          "mean_net_R": 0.1117,
-          "profit_factor": 1.2
+          "n": 12,
+          "mean_net_R": -0.4505,
+          "profit_factor": 0.442
         }
       },
       "caveats": [
@@ -98,6 +98,6 @@
       "next_method": "Freeze hypotheses, add independent windows and cost sensitivity before claims",
       "product_hypothesis": "Reproducible backtest data-quality report/tool; no signals or trade service"
     },
-    "result_sha256": "d7ba3b26f8cdf0e1fb03bd81f9cce8379da8dfe85eec07cd2ae2df187ab5a902"
+    "result_sha256": "9ed220a3e3aa11521c8f3c566357e030233ce93ae82da8183baf6c5ce8d96953"
   }
 }
